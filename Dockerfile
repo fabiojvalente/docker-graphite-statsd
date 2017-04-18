@@ -45,11 +45,9 @@ RUN git clone -b v0.7.2 https://github.com/etsy/statsd.git /opt/statsd
 ADD conf/opt/statsd/config.js /opt/statsd/config.js
 
 ADD conf/usr/local/bin/django_admin_init.exp /usr/local/bin/django_admin_init.exp
-# RUN /usr/bin/python /opt/graphite/webapp/graphite/manage.py syncdb
-# RUN /usr/bin/python /opt/graphite/webapp/graphite/manage.py migrate --run-syncdb
 RUN /usr/local/bin/django_admin_init.exp
-#
-# # logging support
+
+# logging support
 RUN mkdir -p /var/log/carbon /var/log/graphite /var/log/nginx
 ADD conf/etc/logrotate.d/graphite-statsd /etc/logrotate.d/graphite-statsd
 
@@ -70,7 +68,7 @@ RUN apt-get clean\
 
 # # defaults
 EXPOSE 80 2003-2004 2023-2024 8125/udp 8126
-# VOLUME ["/opt/graphite/conf", "/opt/graphite/storage", "/etc/nginx", "/opt/statsd", "/etc/logrotate.d", "/var/log"]
-# WORKDIR /
-# ENV HOME /root
+VOLUME ["/opt/graphite/conf", "/opt/graphite/storage", "/etc/nginx", "/opt/statsd", "/etc/logrotate.d", "/var/log"]
+WORKDIR /
+ENV HOME /root
 CMD ["/sbin/my_init"]
