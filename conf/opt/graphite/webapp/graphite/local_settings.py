@@ -147,7 +147,7 @@
 # The default is 'django.db.backends.sqlite3' with file 'graphite.db'
 # located in STORAGE_DIR
 #
-#DATABASES = {
+# DATABASES = {
 #    'default': {
 #        'NAME': '/opt/graphite/storage/graphite.db',
 #        'ENGINE': 'django.db.backends.sqlite3',
@@ -156,7 +156,7 @@
 #        'HOST': '',
 #        'PORT': ''
 #    }
-#}
+# }
 #
 
 
